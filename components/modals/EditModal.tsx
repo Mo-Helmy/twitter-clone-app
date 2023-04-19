@@ -21,8 +21,8 @@ const EditModal = () => {
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
 
-  const [profileImageFile, setProfileImageFile] = useState<null | File>(null);
-  const [coverImageFile, setCoverImageFile] = useState<null | File>(null);
+  const [profileImageKey, setProfileImageKey] = useState('');
+  const [coverImageKey, setCoverImageKey] = useState('');
 
   useEffect(() => {
     setProfileImage(currentUser?.profileImage);
@@ -48,10 +48,8 @@ const EditModal = () => {
         name,
         username,
         bio,
-        profileImage,
-        coverImage,
-        profileImageFile,
-        coverImageFile,
+        profileImageKey,
+        coverImageKey,
       });
       mutateFetchedUser();
 
@@ -67,10 +65,8 @@ const EditModal = () => {
     name,
     username,
     bio,
-    profileImage,
-    coverImage,
-    profileImageFile,
-    coverImageFile,
+    profileImageKey,
+    coverImageKey,
     mutateFetchedUser,
     editModal,
   ]);
@@ -80,18 +76,18 @@ const EditModal = () => {
       <ImageUpload
         value={profileImage}
         disabled={isLoading}
-        onChange={(image, file) => {
+        onChange={(image, key) => {
           setProfileImage(image);
-          setProfileImageFile(file);
+          setProfileImageKey(key);
         }}
         label="Upload profile image"
       />
       <ImageUpload
         value={coverImage}
         disabled={isLoading}
-        onChange={(image, file) => {
+        onChange={(image, key) => {
           setCoverImage(image);
-          setCoverImageFile(file);
+          setCoverImageKey(key);
         }}
         label="Upload cover image"
       />
