@@ -10,7 +10,8 @@ export default async function handler(
   }
 
   try {
-    const result = await getS3SignedUrl(req.body.key, req.body.body);
+    const { key, body } = req.body;
+    const result = await getS3SignedUrl(key, body);
 
     res.status(200).json(result);
   } catch (error) {
